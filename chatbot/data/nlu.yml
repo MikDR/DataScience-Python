@@ -1,185 +1,172 @@
-#problemi riscontrati:
-#abbiamo dataset in inglese e stavo provando con interazioni in italiano, quando poi vado a chiedere i film essendo gli attributi in
-#inglese la domanda deve essere inglese;
-#nel dataset ogni film ha un insieme di generi, come lo gestiamo?
-
 version: "3.4"
 
 nlu:
 - intent: greet
   examples: |
     - hey
-    - ciao
-    - bella
-    - ciao caro
-    - buongiorno
-    - buonasera
-    - giorno
-    - ei caro
-    - ei ciao
-    - ciao bro
-    - buon giorno
-    - buona sera
-    - buon pomeriggio
-    - salve
-    - aò
-    - ao
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
 
   - intent: goodbye
    examples: |
-    - arrivederci
-    - a presto
-    - buonanotte
-    - a mai più
-    - buona giornata
-    - addio
-    - a dopo
-    - grazie, ciao
-    - grazie, arrivederci
-    - grazie, a presto
-    - grazie, buonanotte
-    - ci vediamo
-    - ci sentiamo
-    - alla prossima
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
 
 - intent: affirm
   examples: |
-    - si
-    - s
-    - siiiiiiii
-    - certamente
-    - va bene
-    - sicuramente
-    - corretto
-    - esatto
-    - sono d'accordo
-    - d'accordo
+    - Yes
+    - Y
+    - Yessssss
+    - Certainly
+    - All right
+    - Surely
+    - correct
+    - Exactly
+    - I agree
+    - agree
     - siuuum
-    - yes
 
 - intent: deny
   examples: |
     - no
     - n
-    - mai
-    - non credo
-    - non mi piace
-    - proprio no
-    - in realtà no
-    - non ci siamo
-    - assolutamente no
-    - ma che diciii
-    - errato
-    - noooooo
+    - never
+    - I do not believe
+    - I don't like
+    - absolutely not
+    - actually no
+    - we are not
+    - Absolutely not
+    - what are you saying?
+    - incorrect
+    - nooooo
   
 - intent: mood_great
   examples: |
-    - sono felice
-    - mi sento bene
-    - sto bene grazie
-    - buona giornata a te!
-    - io, benissimo grazie!
-    - sei un fenomeno
-    - sei fortissimo
-    - sei bravissimo
-    - volo
-    - spaziale
-    - mi inizia a piacere
-    - mi sento bene
-    - sto bene
-    - mai stato meglio
-    - mi sento fortunato
-    - tutto bene grazie
-    - giornata fantastica!
-    - che giornata meravigliosa
-    - è perfetto
-    - fantastico
-    - mi sento una meraviglia
-    - sto veramente bene
-    - sto una favola
-    - sto bene grazie
-    - sono felice
-    - oggi è un giorno fantastico
-    - sono così felice oggi
-    - mai stato meglio
-    - sto na crema
-    - sto come una pasqua
+    - I am happy
+    - I feel good
+    - I am fine thank you
+    - good day to you!
+    - I, very well thank you!
+    - you are great
+    - you are very strong
+    - you are very good
+    - flight
+    - spatial
+    - I'm starting to like it
+    - I feel good
+    - I am fine
+    - never been better
+    - I'm feeling lucky
+    - Everything is fine thank you
+    - great day!
+    - what a wonderful day
+    - it's perfect
+    - Fantastic
+    - I feel amazing
+    - I'm really good
+    - I'm a fairy tale
+    - I am fine thank you
+    - I am happy
+    - today is a fantastic day
+    - I'm so happy today
+    - never been better
+    - I'm a cream
+    - I'm like Easter
     - all good
 
 - intent: mood_unhappy
   examples: |
-    - sono triste
-    - non mi sento tanto bene
-    - sono un po' arrabbiato
-    - è stata una giornata orribile
-    - sto male
-    - sono malato
-    - sono vermente giù oggi
-    - non va bene
-    - irritante
-    - sono irritato
-    - non mi sento molto bene
-    - fa schifo!
-    - sto veramente male
-    - il peggior giorno della mia vita!
-    - mi fai stare male
-    - sto giù
-    - tutto va storto oggi
-    - mi sento uno schifo
-    - mi annoi
-    - mi sto annoiando
-    - mi sento inutile
-    - depresso
-    - pesante
-    - mi sento un po' perso
-    - veramente triste
-    - non felice
-    - male
-    - molto male
-    - senza senso
-    - terribile
-    - veramente triste
-    - così triste
-    - mi sento giù
-    - mi sento triste
-    - non sono ok oggi
+    - I'm sad
+    - I do not feel so well
+    - I'm a little angry
+    - it was a horrible day
+    - I feel bad
+    - I'm sick
+    - I'm really down today
+    - that's no good
+    - irritating
+    - I'm irritated
+    - I do not feel very well
+    - it sucks!
+    - I'm really sick
+    - the worst day of my life!
+    - you make Me Feel bad
+    - I'm down
+    - everything goes wrong today
+    - I feel like crap
+    - you bore me
+    - I am getting bored
+    - I feel useless
+    - depressed
+    - heavy
+    - I feel a little lost
+    - really sad
+    - not happy
+    - bad
+    - very bad
+    - nonsense
+    - terrible
+    - really sad
+    - so sad
+    - I'm feeling down
+    - I feel sad
+    - I'm not ok today
     - No good
-    - mi sento veramente triste
-    - non è facile
-    - in realtà non sto bene
-    - non sono bravo
-    - sono da solo come al solito
-    - sto attraversando un periodo difficile
-    - na merda
-    - sono imbarazzato
-    - piango
+    - I feel really sad
+    - it's not easy
+    - I'm actually not well
+    - I'm not good
+    - I'm alone as usual
+    - I'm going through a difficult time
+    - shit
+    - I'm embarassed
+    - I cry
 
 - intent: bot_challenge
   examples: |
-    - sei un bot?
-    - sei un umano?
-    - sto parlando con un bot?
-    - sto parlando con un umano?
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
 
 
 - intent: help
   examples: |
-    - cosa posso chiederti?
-    - quali sono le tue funzioni?
-    - cosa fai?
-    - cosa dovrei chiederti?
-    - come puoi aiutarmi?
-    - ho bisogno del tuo aiuto
-    - aiutamiiii
+    - what can I ask you?
+    - what are your duties?
+    - What are you doing?
+    - what should I ask you?
+    - how can you help me?
+    - I need your help
+    - help me
     - help
-    - aiuto
+    - help
     - /help
 
 - intent: start
   examples: |
     - start
     - open
-    - apri
     - begin
     - init
     - /start
@@ -188,8 +175,7 @@ nlu:
   examples: |
     - quit
     - close
-    - chiudi
-    - annulla
+    - cancel
     - stop
     - /stop
 
@@ -200,9 +186,9 @@ nlu:
     - sadasdasdasd
     - hmmmmm
     - hahahahhaha
-    - sto dormendo
-    - che tempo fa?
-    - che sta facendo la partita?
+    - I'm sleeping
+    - what is the weather like?
+    - what is the game doing?
     - aeijfpvefvkèdlv
     - lmlmlmlm
     - uecwjeèqrpo
@@ -215,70 +201,75 @@ nlu:
 
 - intent: cerca_film
   examples: |
-    - Vorrei cercare un film
-    - Cerco un film
-    - Voglio un film
-    - Dammi un film
-    - Dimmi un film
-    - Dammi film
-    - Film
-    - Cerco film
-    - Voglio un film particolare
-    - Inizio ricerca film
-    - Desidero cercare un film
+    - I would like to see a movie
+    - What movies can you recommend?
+    - Suggest a movie
+    - I want to see a movie
+    - I want to watch a movie
+    - I'd love to see a movie
+    - get me a movie
+    - Please suggest a movie
+    - any movie suggestions?
+    - I wonder if you can recommend me a movie
+    - I wonder if you can suggest a movie
+    - Show me a movie
 
-- intent: info_film
+- intent: film_per_genere
   examples: |
-    - I would like to watch an [action] movie (genres)
-    - I want to see an [action] movie (genres)
+    - I would like to watch an [action] movie (generi)
+    - I would like to watch an [action, drama] movie (generi)
+    - I want to see an [action] movie (generi)
     - I would like to see an [action] movie (genere)
-    - What [adventure] movies can you recommend? (genres)
-    - Suggest an [adventure] movie (genres)
-    - Show me an [animation] movie (genres)
-    - I wonder if you can suggest a [comedy] movie? (genres)
-    - Is there a [thrilling] crime movie? (genres)
-    - I am going to the movies today and I wonder if there is a [documentary] movies out there? (genres)
-    - I am planning a movie night today. What [drama] movies are there? (genres)
-    - Show me [family] movies, please (genres)
-    - I want to watch a [fantasy] movie (genres)
-    - any [fantasy] movie suggestions? (genres)
-    - Can you recommend a [history] movie? (genres)
-    - Oh, sorry, I meant [horror] movies (genres)
-    - [musical] movies, please (genres)
-    - Please suggest a [musical] movie (genres)
-    - The [mystery] movies that are available (genres)
-    - I'd love to see a [mystery] movie (genres)
-    - Suggest any [romance] movie to me (genres)
-    - What cool [science fiction] can you recommend? (genres)
-    - Is there a good [TV movie] that you can suggest? (genres)
-    - I would love to see a [thriller] movie (genres)
-    - get me a [thriller] movie (genres)
-    - Tell me the name of a [war] movie (genres)
-    - Show me a [war] movie (genres)
-    - I would like to watch a [western] movie with a friend (genres)
-    - I wonder if you can recommend me a [western] movie (genres)
+    - What [adventure] movies can you recommend? (generi)
+    - Suggest an [adventure] movie (generi)
+    - Show me an [animation] movie (generi)
+    - I wonder if you can suggest a [comedy] movie? (generi)
+    - Is there a [thrilling] crime movie? (generi)
+    - I am going to the movies today and I wonder if there is a [documentary] movies out there? (generi)
+    - I am planning a movie night today. What [drama] movies are there? (generi)
+    - Show me [family] movies, please (generi)
+    - I want to watch a [fantasy] movie (generi)
+    - any [fantasy] movie suggestions? (generi)
+    - Can you recommend a [history] movie? (generi)
+    - Oh, sorry, I meant [horror] movies (generi)
+    - [musical] movies, please (generi)
+    - Please suggest a [musical] movie (generi)
+    - The [mystery] movies that are available (generi)
+    - I'd love to see a [mystery] movie (generi)
+    - Suggest any [romance] movie to me (generi)
+    - What cool [science fiction] can you recommend? (generi)
+    - Is there a good [TV movie] that you can suggest? (generi)
+    - I would love to see a [thriller] movie (generi)
+    - get me a [thriller] movie (generi)
+    - Tell me the name of a [war] movie (generi)
+    - Show me a [war] movie (generi)
+    - I would like to watch a [western] movie with a friend (generi)
+    - I wonder if you can recommend me a [western] movie (generi)
 
-- intent: movie_info
+- intent: cerca_per_nome
   examples: |
-    - [action](genres)
-    - [adventure](genres)
-    - [animation](genres)
-    - [comedy](genres)
-    - [thrilling](genres)
-    - [documentary](genres)
-    - [drama](genres)
-    - [family](genres)
-    - [fantasy](genres)
-    - [history](genres)
-    - [horror](genres)
-    - [musical](genres)
-    - [mystery](genres)
-    - [romance](genres)
-    - [science fiction](genres)
-    - [TV movie](genres)
-    - [thriller](genres)
-    - [war](genres)
-    - [western](genres)
-    - [fiction](genres)
-    - [crime](genres)
+    - I would like to search the film [Avatar](titoli)
+    - The name of the movie is [Titanic](titoli)
+    - the film is [Iron Man 2](titoli)
+    - I would like the film [Interstellar](titoli)
+    - the film I'm looking for is [Interstellar](titoli)
+    - the film to look for is [The Avengers](titoli)
+    - I'm looking for the film [The Dark Knight](titoli)
+    - I'm interested in the [Avengers: Infinity War] movie (titoli)
+    - I would be interested in the film [Fight Club](titoli)
+    - would you give me the [Guardians of the Galaxy] movie (titoli)
+    - I'm going to see [Pulp Fiction](titoli)
+    - film [Forrest Gump](titoli)
+    - film: [Harry Potter and the Philosopher's Stone]
+    - [Harry Potter and the Philosopher's Stone](titoli)
+    - [Iron Man](titoli)
+    - [Django Unchained](titoli) 
+    - [The Shawshank Redemption](titoli)
+    - [The Matrix](titoli)
+    - [The Wolf of Wall Street](titoli)
 
+- synonym: movie
+  examples: |
+    - film
+    - movies
+    - films
