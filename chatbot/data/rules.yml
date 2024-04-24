@@ -1,0 +1,8 @@
+version: "3.4"
+
+rules:
+
+- rule: Starting rule 
+  steps:
+  - intent: start
+  - action: utter_start
