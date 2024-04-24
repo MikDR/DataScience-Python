@@ -1,0 +1,284 @@
+#problemi riscontrati:
+#abbiamo dataset in inglese e stavo provando con interazioni in italiano, quando poi vado a chiedere i film essendo gli attributi in
+#inglese la domanda deve essere inglese;
+#nel dataset ogni film ha un insieme di generi, come lo gestiamo?
+
+version: "3.4"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - ciao
+    - bella
+    - ciao caro
+    - buongiorno
+    - buonasera
+    - giorno
+    - ei caro
+    - ei ciao
+    - ciao bro
+    - buon giorno
+    - buona sera
+    - buon pomeriggio
+    - salve
+    - aò
+    - ao
+
+  - intent: goodbye
+   examples: |
+    - arrivederci
+    - a presto
+    - buonanotte
+    - a mai più
+    - buona giornata
+    - addio
+    - a dopo
+    - grazie, ciao
+    - grazie, arrivederci
+    - grazie, a presto
+    - grazie, buonanotte
+    - ci vediamo
+    - ci sentiamo
+    - alla prossima
+
+- intent: affirm
+  examples: |
+    - si
+    - s
+    - siiiiiiii
+    - certamente
+    - va bene
+    - sicuramente
+    - corretto
+    - esatto
+    - sono d'accordo
+    - d'accordo
+    - siuuum
+    - yes
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - mai
+    - non credo
+    - non mi piace
+    - proprio no
+    - in realtà no
+    - non ci siamo
+    - assolutamente no
+    - ma che diciii
+    - errato
+    - noooooo
+  
+- intent: mood_great
+  examples: |
+    - sono felice
+    - mi sento bene
+    - sto bene grazie
+    - buona giornata a te!
+    - io, benissimo grazie!
+    - sei un fenomeno
+    - sei fortissimo
+    - sei bravissimo
+    - volo
+    - spaziale
+    - mi inizia a piacere
+    - mi sento bene
+    - sto bene
+    - mai stato meglio
+    - mi sento fortunato
+    - tutto bene grazie
+    - giornata fantastica!
+    - che giornata meravigliosa
+    - è perfetto
+    - fantastico
+    - mi sento una meraviglia
+    - sto veramente bene
+    - sto una favola
+    - sto bene grazie
+    - sono felice
+    - oggi è un giorno fantastico
+    - sono così felice oggi
+    - mai stato meglio
+    - sto na crema
+    - sto come una pasqua
+    - all good
+
+- intent: mood_unhappy
+  examples: |
+    - sono triste
+    - non mi sento tanto bene
+    - sono un po' arrabbiato
+    - è stata una giornata orribile
+    - sto male
+    - sono malato
+    - sono vermente giù oggi
+    - non va bene
+    - irritante
+    - sono irritato
+    - non mi sento molto bene
+    - fa schifo!
+    - sto veramente male
+    - il peggior giorno della mia vita!
+    - mi fai stare male
+    - sto giù
+    - tutto va storto oggi
+    - mi sento uno schifo
+    - mi annoi
+    - mi sto annoiando
+    - mi sento inutile
+    - depresso
+    - pesante
+    - mi sento un po' perso
+    - veramente triste
+    - non felice
+    - male
+    - molto male
+    - senza senso
+    - terribile
+    - veramente triste
+    - così triste
+    - mi sento giù
+    - mi sento triste
+    - non sono ok oggi
+    - No good
+    - mi sento veramente triste
+    - non è facile
+    - in realtà non sto bene
+    - non sono bravo
+    - sono da solo come al solito
+    - sto attraversando un periodo difficile
+    - na merda
+    - sono imbarazzato
+    - piango
+
+- intent: bot_challenge
+  examples: |
+    - sei un bot?
+    - sei un umano?
+    - sto parlando con un bot?
+    - sto parlando con un umano?
+
+
+- intent: help
+  examples: |
+    - cosa posso chiederti?
+    - quali sono le tue funzioni?
+    - cosa fai?
+    - cosa dovrei chiederti?
+    - come puoi aiutarmi?
+    - ho bisogno del tuo aiuto
+    - aiutamiiii
+    - help
+    - aiuto
+    - /help
+
+- intent: start
+  examples: |
+    - start
+    - open
+    - apri
+    - begin
+    - init
+    - /start
+
+- intent: stop
+  examples: |
+    - quit
+    - close
+    - chiudi
+    - annulla
+    - stop
+    - /stop
+
+- intent: out_of_scope
+  examples: |
+    - blablabla
+    - lol
+    - sadasdasdasd
+    - hmmmmm
+    - hahahahhaha
+    - sto dormendo
+    - che tempo fa?
+    - che sta facendo la partita?
+    - aeijfpvefvkèdlv
+    - lmlmlmlm
+    - uecwjeèqrpo
+    - aaaaaaaaaaaa
+    - pppppppppp
+    - kkkkkkk
+    - pappapero
+    - eriewjnflkwdnfl
+    - lkdlklkdslfkjdskf
+
+- intent: cerca_film
+  examples: |
+    - Vorrei cercare un film
+    - Cerco un film
+    - Voglio un film
+    - Dammi un film
+    - Dimmi un film
+    - Dammi film
+    - Film
+    - Cerco film
+    - Voglio un film particolare
+    - Inizio ricerca film
+    - Desidero cercare un film
+
+- intent: info_film
+  examples: |
+    - I would like to watch an [action] movie (genres)
+    - I want to see an [action] movie (genres)
+    - I would like to see an [action] movie (genere)
+    - What [adventure] movies can you recommend? (genres)
+    - Suggest an [adventure] movie (genres)
+    - Show me an [animation] movie (genres)
+    - I wonder if you can suggest a [comedy] movie? (genres)
+    - Is there a [thrilling] crime movie? (genres)
+    - I am going to the movies today and I wonder if there is a [documentary] movies out there? (genres)
+    - I am planning a movie night today. What [drama] movies are there? (genres)
+    - Show me [family] movies, please (genres)
+    - I want to watch a [fantasy] movie (genres)
+    - any [fantasy] movie suggestions? (genres)
+    - Can you recommend a [history] movie? (genres)
+    - Oh, sorry, I meant [horror] movies (genres)
+    - [musical] movies, please (genres)
+    - Please suggest a [musical] movie (genres)
+    - The [mystery] movies that are available (genres)
+    - I'd love to see a [mystery] movie (genres)
+    - Suggest any [romance] movie to me (genres)
+    - What cool [science fiction] can you recommend? (genres)
+    - Is there a good [TV movie] that you can suggest? (genres)
+    - I would love to see a [thriller] movie (genres)
+    - get me a [thriller] movie (genres)
+    - Tell me the name of a [war] movie (genres)
+    - Show me a [war] movie (genres)
+    - I would like to watch a [western] movie with a friend (genres)
+    - I wonder if you can recommend me a [western] movie (genres)
+
+- intent: movie_info
+  examples: |
+    - [action](genres)
+    - [adventure](genres)
+    - [animation](genres)
+    - [comedy](genres)
+    - [thrilling](genres)
+    - [documentary](genres)
+    - [drama](genres)
+    - [family](genres)
+    - [fantasy](genres)
+    - [history](genres)
+    - [horror](genres)
+    - [musical](genres)
+    - [mystery](genres)
+    - [romance](genres)
+    - [science fiction](genres)
+    - [TV movie](genres)
+    - [thriller](genres)
+    - [war](genres)
+    - [western](genres)
+    - [fiction](genres)
+    - [crime](genres)
+
