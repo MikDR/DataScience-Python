@@ -89,3 +89,148 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: help
+  examples: |
+    - what can I ask you?
+    - what are your duties?
+    - What are you doing?
+    - what should I ask you?
+    - how can you help me?
+    - I need your help
+    - help me
+    - help
+    - help
+    - /help
+
+- intent: start
+  examples: |
+    - start
+    - open
+    - begin
+    - init
+    - /start
+
+- intent: stop
+  examples: |
+    - quit
+    - close
+    - cancel
+    - stop
+    - /stop
+
+- intent: out_of_scope
+  examples: |
+    - blablabla
+    - lol
+    - sadasdasdasd
+    - hmmmmm
+    - hahahahhaha
+    - I'm sleeping
+    - what is the weather like?
+    - what is the game doing?
+    - aeijfpvefvkèdlv
+    - lmlmlmlm
+    - uecwjeèqrpo
+    - aaaaaaaaaaaa
+    - pppppppppp
+    - kkkkkkk
+    - pappapero
+    - eriewjnflkwdnfl
+    - lkdlklkdslfkjdskf
+
+- intent: cerca_film
+  examples: |
+    - I would like to see a movie
+    - What movies can you recommend?
+    - Suggest a movie
+    - I want to see a movie
+    - I want to watch a movie
+    - I'd love to see a movie
+    - get me a movie
+    - Please suggest a movie
+    - any movie suggestions?
+    - I wonder if you can recommend me a movie
+    - I wonder if you can suggest a movie
+    - Show me a movie
+
+- intent: film_per_genere
+  examples: |
+    - I would like to watch an [action] movie (generi)
+    - I would like to watch an [action, drama] movie (generi)
+    - I want to see an [action] movie (generi)
+    - I would like to see an [action] movie (genere)
+    - What [adventure] movies can you recommend? (generi)
+    - Suggest an [adventure] movie (generi)
+    - Show me an [animation] movie (generi)
+    - I wonder if you can suggest a [comedy] movie? (generi)
+    - Is there a [thrilling] crime movie? (generi)
+    - I am going to the movies today and I wonder if there is a [documentary] movies out there? (generi)
+    - I am planning a movie night today. What [drama] movies are there? (generi)
+    - Show me [family] movies, please (generi)
+    - I want to watch a [fantasy] movie (generi)
+    - any [fantasy] movie suggestions? (generi)
+    - Can you recommend a [history] movie? (generi)
+    - Oh, sorry, I meant [horror] movies (generi)
+    - [musical] movies, please (generi)
+    - Please suggest a [musical] movie (generi)
+    - The [mystery] movies that are available (generi)
+    - I'd love to see a [mystery] movie (generi)
+    - Suggest any [romance] movie to me (generi)
+    - What cool [science fiction] can you recommend? (generi)
+    - Is there a good [TV movie] that you can suggest? (generi)
+    - I would love to see a [thriller] movie (generi)
+    - get me a [thriller] movie (generi)
+    - Tell me the name of a [war] movie (generi)
+    - Show me a [war] movie (generi)
+    - I would like to watch a [western] movie with a friend (generi)
+    - I wonder if you can recommend me a [western] movie (generi)
+
+- intent: cerca_per_nome
+  examples: |
+    - I would like to search the film [Avatar](titoli)
+    - The name of the movie is [Titanic](titoli)
+    - the film is [Iron Man 2](titoli)
+    - I would like the film [Interstellar](titoli)
+    - the film I'm looking for is [Interstellar](titoli)
+    - the film to look for is [The Avengers](titoli)
+    - I'm looking for the film [The Dark Knight](titoli)
+    - I'm interested in the [Avengers: Infinity War] movie (titoli)
+    - I would be interested in the film [Fight Club](titoli)
+    - would you give me the [Guardians of the Galaxy] movie (titoli)
+    - I'm going to see [Pulp Fiction](titoli)
+    - film [Forrest Gump](titoli)
+    - film: [Harry Potter and the Philosopher's Stone]
+    - [Harry Potter and the Philosopher's Stone](titoli)
+    - [Iron Man](titoli)
+    - [Django Unchained](titoli) 
+    - [The Shawshank Redemption](titoli)
+    - [The Matrix](titoli)
+    - [The Wolf of Wall Street](titoli)
+
+- intent: voto_maggiore_di
+  examples: |
+    - [5.0](vote_average)
+    - [6.0](vote_average)
+    - [7.0](vote_average)
+    - [8.0](vote_average)
+    - [9.0](vote_average)
+    - [5.5](vote_average)
+    - [6.7](vote_average)
+    - [7.59](vote_average)
+    - [8.363](vote_average)
+    - [9.32](vote_average)
+    - film with a rating better than [8.363](vote_average)
+    - Movie with a rating > [5.5](vote_average)
+
+- intent: ringraziamento
+  examples: |
+    - thanks
+    - thank you
+    - OK
+
+- synonym: movie
+  examples: |
+    - film
+    - movies
+    - films
