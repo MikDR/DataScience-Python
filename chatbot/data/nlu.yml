@@ -244,17 +244,17 @@ nlu:
 #ricordati che attore lo devi inserire nello slot in domain poichè non abbiamo un lookups e non possiamo trovare tutti gli attori
 - intent: film_con_attore
   examples: | 
-  - Serch a film with [Brad Pitt](attore)
-  - Search for a movie starring [Adam Sandle](attore)
-  - Find a film featuring [Leonardo DiCaprio](attore)
-  - Look up a movie with [George Clooney](attore)
-  - Show me films with [Daniel Craig](attore).
-  - Can you find a movie that includes [Jim Carrey](attore)?
-  - I want to watch a film with [Tom Hanks](attore).
-  - Discover a movie starring [Morgan Freeman](attore).
-  - Seek out a film where [Tom Holland](attore) is one of the actors.
-  - Locate a movie in which [Christian Bale](attore) appears.
-  - Retrieve a film with [Will Smith](attore) in the cast.
+    - Serch a film with [Brad Pitt](attore)
+    - Search for a movie starring [Adam Sandle](attore)
+    - Find a film featuring [Leonardo DiCaprio](attore)
+    - Look up a movie with [George Clooney](attore)
+    - Show me films with [Daniel Craig](attore).
+    - Can you find a movie that includes [Jim Carrey](attore)?
+    - I want to watch a film with [Tom Hanks](attore).
+    - Discover a movie starring [Morgan Freeman](attore).
+    - Seek out a film where [Tom Holland](attore) is one of the actors.
+    - Locate a movie in which [Christian Bale](attore) appears.
+    - Retrieve a film with [Will Smith](attore) in the cast.
 
 - intent: ringraziamento
   examples: |
