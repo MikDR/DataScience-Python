@@ -223,6 +223,24 @@ nlu:
     - film with a rating better than [8.363](vote_average)
     - Movie with a rating > [5.5](vote_average)
 
+- intent: info_film
+  examples: |
+    - Tell me about [Titanic](titolo)
+    - What is [Iron Man 2](titolo) about?
+    - Can you give me information about [The Wolf of Wall Street](titolo)
+    - What is [The Matrix](titolo) rating?
+    - Plot of the movie [Forrest Gump](titolo)
+    - Info about [Django Unchained](titolo)
+    - Who stars in [Avatar](titolo)?
+    - Tell me about the actors in [Iron Man](titolo).
+    - What are the genres of [Deadpool](titolo)?
+    - When was [Interstellar](titolo) released
+    - What year did [Inception](titolo) come out?
+    - How good are the ratings for [Avengers: Endgame](titolo)?
+    - Give me the plot of the movie [Pulp Fiction](titolo).
+    - What can you tell me about [Guardians of the Galaxy](titolo)?
+    - Who directed [Fight Club](titolo)?
+
 - intent: ringraziamento
   examples: |
     - thanks

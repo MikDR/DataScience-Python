@@ -21,8 +21,11 @@ intents:
       use_entities:
         - titolo
   - voto_maggiore_di:
-      use_entites:
+      use_entities:
         - voto_average
+  - info_film:
+      use_entities:
+        - titolo
 
 
 actions:
@@ -41,6 +44,7 @@ actions:
   - action_cerca_per_nome #si devono implementare
   - action_voto_maggiore_di #si devono implementare
   - action_ringraziamento #si devono implementare
+  - action_info_film #si devono implementare
 
 entities:
   - titolo

@@ -22,6 +22,11 @@ rules:
   - intent: help
   - action: utter_help
 
+- rule: Riproviamo
+  steps:
+  - intent: out_of_scope
+  - action: utter_riprova
+
 #- rule: Feedback cerca film
 #  steps:
 #  - intent: cerca_film
