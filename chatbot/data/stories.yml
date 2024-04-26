@@ -54,7 +54,7 @@ stories:
   - action: utter_happy
   - action: utter_goodbye
 
-- story: cerca un film
+- story: cerca un film 2
   steps:
   - intent: cerca_film
   - action: action_cerca_film
@@ -74,7 +74,7 @@ stories:
   - action: utter_happy
   - action: utter_goodbye
 
-- story: cerca un film per genere
+- story: cerca un film per genere 2
   steps:
   - intent: film_per_genere
   - action: action_film_per_genere
@@ -95,7 +95,7 @@ stories:
   - action: utter_happy
   - action: utter_goodbye
 
-- story: cerca un film per nome
+- story: cerca un film per nome 2
   steps:
   - intent: cerca_per_nome
   - action: action_cerca_per_nome
@@ -115,7 +115,7 @@ stories:
   - action: utter_happy
   - action: utter_goodbye
 
-- story: cerca un film per voto
+- story: cerca un film per voto 2
   steps:
   - intent: voto_maggiore_di
   - action: action_voto_maggiore_di
