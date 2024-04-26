@@ -45,3 +45,8 @@ rules:
   - intent: voto_maggiore_di
   - action: action_voto_maggiore_di
   - action: utter_did_that_help 
+
+- rule: Non ho capito
+  steps:
+  - intent: out_of_scope
+  - action: utter_riprova
