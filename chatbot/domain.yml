@@ -25,7 +25,7 @@ actions:
   - utter_did_that_help
   - utter_help
   - utter_happy
-  - utter_goodby
+  - utter_goodbye
   - utter_iambot
   - action_cerca_film #si devono implementare
   - action_film_per_genere #si devono implementare
