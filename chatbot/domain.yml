@@ -45,7 +45,7 @@ actions:
 entities:
   - titolo
   - genere
-  - voto_average
+  - vote_average
 
 responses:
 
@@ -90,9 +90,28 @@ utter_cheer_up:
   - text: "Try again can help you."
   - text: "Maybe I didn't understand, try again or type /help"
 
-forms:
+#forms:
 
 slots:
+  titolo:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: titolo
+  
+  genere:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: genere
+  
+  vote_average:
+    type: float
+    mappings:
+      - type: from_entity
+        entity: vote_average
+
+  
 
 session_config:
   session_expiration_time: 60
