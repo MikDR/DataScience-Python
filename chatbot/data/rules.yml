@@ -20,4 +20,28 @@ rules:
 - rule: Helping rule 
   steps:
   - intent: help
-  - action: utter_did_that_help
+  - action: utter_help
+
+- rule: Feedback cerca film
+  steps:
+  - intent: cerca_film
+  - action: action_cerca_film
+  - action: utter_did_that_help 
+
+- rule: Feedback film per genere
+  steps:
+  - intent: film_per_genere
+  - action: action_film_per_genere
+  - action: utter_did_that_help 
+
+- rule: Feedback cerca per nome
+  steps:
+  - intent: cerca_per_nome
+  - action: action_cerca_per_nome
+  - action: utter_did_that_help 
+
+- rule: Feedback cerca voto migliore
+  steps:
+  - intent: voto_maggiore_di
+  - action: action_voto_maggiore_di
+  - action: utter_did_that_help 

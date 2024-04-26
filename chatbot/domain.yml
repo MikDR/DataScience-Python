@@ -27,6 +27,8 @@ actions:
   - utter_happy
   - utter_goodbye
   - utter_iambot
+  - utter_deny
+  - utter_riprova
   - action_cerca_film #si devono implementare
   - action_film_per_genere #si devono implementare
   - action_cerca_per_nome #si devono implementare
