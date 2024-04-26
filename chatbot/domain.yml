@@ -36,7 +36,7 @@ actions:
   - utter_help
   - utter_happy
   - utter_goodbye
-  - utter_iambot
+  - utter_iamabot
   - utter_deny
   - utter_riprova
   - action_cerca_film #si devono implementare
