@@ -26,6 +26,9 @@ intents:
   - info_film:
       use_entities:
         - titolo
+  - film_con_attore:
+      use_entities:
+        - attore
 
 
 actions:
@@ -45,11 +48,13 @@ actions:
   - action_voto_maggiore_di #si devono implementare
   - action_ringraziamento #si devono implementare
   - action_info_film #si devono implementare
+  - action_film_con_attore #si devono implementare
 
 entities:
   - titolo
   - genere
   - vote_average
+  - attore
 
 responses:
 
@@ -114,8 +119,12 @@ slots:
     mappings:
       - type: from_entity
         entity: vote_average
-
   
+  attore:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: attore
 
 session_config:
   session_expiration_time: 60
