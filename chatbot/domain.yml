@@ -1,0 +1,56 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - help
+  - start
+  - stop
+  - out_of_scope
+  - cerca_film
+  - film_per_genere
+  - cerca_per_nome
+  - voto_maggiore_di
+  - ringraziamento
+
+responses:
+
+  utter_start:
+  -text: "Hello, my name is FilmBot. I'm the best bot to help you to serch a movie."
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_help:
+  - text: "You can use one of the following commands to interact with me:
+          \N
+          \n-I would like to see a movie.
+          \N
+          \n-I would like to search a movie by name or genre: to search for a movie directly by its name.
+          \N
+          \n-I would like to see a movie with a rating better then (a number): to ask me to serch a movies with a rating better than your number."
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
