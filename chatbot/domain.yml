@@ -13,10 +13,17 @@ intents:
   - stop
   - out_of_scope
   - cerca_film
-  - film_per_genere #si devono mettere use entities
-  - cerca_per_nome #si devono mettere use entities
-  - voto_maggiore_di #si devono mettere use entities
   - ringraziamento
+  - film_per_genere: 
+      use_entities:
+        - genere
+  - cerca_per_nome:
+      use_entities:
+        - titolo
+  - voto_maggiore_di:
+      use_entites:
+        - voto_average
+
 
 actions:
   - utter_start
@@ -36,6 +43,9 @@ actions:
   - action_ringraziamento #si devono implementare
 
 entities:
+  - titolo
+  - genere
+  - voto_average
 
 responses:
 
