@@ -56,19 +56,19 @@ responses:
   - text: "Hey! How are you?"
 
   utter_cheer_up:
-    - text: "Here is something to cheer you up:"
-      image: "https://i.imgur.com/nGF1K8f.jpg"
+  - text: "Here is something to cheer you up:"
+
 
   utter_did_that_help:
   - text: "Did that help you?"
 
   utter_help:
   - text: "You can use one of the following commands to interact with me:
-          \N
+          \n
           \n-I would like to see a movie.
-          \N
-          \n-I would like to search a movie by name or genre: to search for a movie directly by its name.
-          \N
+          \n
+          \n-I would like to search a movie by name or genere: to search for a movie directly by its name.
+          \n
           \n-I would like to see a movie with a rating better then (a number): to ask me to serch a movies with a rating better than your number."
 
   utter_happy:
