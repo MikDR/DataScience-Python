@@ -1,0 +1,26 @@
+version: "3.1"
+
+nlu:
+  - lookup: genere
+    examples: |
+      - action
+      - adventure
+      - animation
+      - comedy
+      - thrilling
+      - documentary
+      - drama
+      - family
+      - fantasy
+      - history
+      - horror
+      - musical
+      - mystery
+      - romance
+      - science fiction
+      - TV movie
+      - thriller
+      - war
+      - western
+      - fiction
+      - crime
