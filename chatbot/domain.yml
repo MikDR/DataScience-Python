@@ -69,6 +69,14 @@ utter_cheer_up:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_deny:
+  - text: "I'm sorry not to help you."
+  - text: "Sorry I can do better."
+
+  utter_riprova:
+  - text: "Try looking again."
+  - text: "Try again can help you."
+
 forms:
 
 slots:
