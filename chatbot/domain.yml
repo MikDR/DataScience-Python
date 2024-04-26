@@ -13,9 +13,9 @@ intents:
   - stop
   - out_of_scope
   - cerca_film
-  - film_per_genere
-  - cerca_per_nome
-  - voto_maggiore_di
+  - film_per_genere #si devono mettere use entities
+  - cerca_per_nome #si devono mettere use entities
+  - voto_maggiore_di #si devono mettere use entities
   - ringraziamento
 
 actions:
@@ -27,6 +27,11 @@ actions:
   - utter_happy
   - utter_goodby
   - utter_iambot
+  - action_cerca_film #si devono implementare
+  - action_film_per_genere #si devono implementare
+  - action_cerca_per_nome #si devono implementare
+  - action_voto_maggiore_di #si devono implementare
+  - action_ringraziamento #si devono implementare
 
 entities:
 
