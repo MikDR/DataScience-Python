@@ -2,6 +2,21 @@ version: "3.1"
 
 stories:
 
+- story: Starting story
+  steps:
+  - intent: start
+  - action: utter_start
+
+- story: Helping story
+  steps:
+  - intent: help
+  - action: utter_help
+
+- story: Stopping story 
+  steps:
+  - intent: stop
+  - action: utter_good_bye
+
 - story: happy path
   steps:
   - intent: greet
@@ -28,3 +43,85 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+
+- story: cerca un film
+  steps:
+  - intent: cerca_film
+  - action: action_cerca_film
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_goodbye
+
+- story: cerca un film
+  steps:
+  - intent: cerca_film
+  - action: action_cerca_film
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+  - action: utter_riprova
+  - intent: cerca_film
+
+
+- story: cerca un film per genere
+  steps:
+  - intent: film_per_genere
+  - action: action_film_per_genere
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_goodbye
+
+- story: cerca un film per genere
+  steps:
+  - intent: film_per_genere
+  - action: action_film_per_genere
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+  - action: utter_riprova
+  - intent: film_per_genere
+
+
+
+- story: cerca un film per nome
+  steps:
+  - intent: cerca_per_nome
+  - action: action_cerca_per_nome
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_goodbye
+
+- story: cerca un film per nome
+  steps:
+  - intent: cerca_per_nome
+  - action: action_cerca_per_nome
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+  - action: utter_riprova
+  - intent: cerca_per_nome
+
+
+- story: cerca un film per voto
+  steps:
+  - intent: voto_maggiore_di
+  - action: action_voto_maggiore_di
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_goodbye
+
+- story: cerca un film per voto
+  steps:
+  - intent: voto_maggiore_di
+  - action: action_voto_maggiore_di
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+  - action: utter_riprova
+  - intent: voto_maggiore_di
+
