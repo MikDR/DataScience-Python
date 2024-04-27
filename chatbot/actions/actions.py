@@ -148,7 +148,7 @@ class ActionCercaPerNome(Action):
  
         return []
 
-
+#aggiustare il voto intero...
 class ActionVotoMaggioreDi(Action):
     def name(self) -> Text:
         return "action_voto_maggiore_di"
@@ -184,10 +184,11 @@ class ActionVotoMaggioreDi(Action):
         vote_average = random_film['vote_average'].values[0]
         runtime = random_film['runtime'].values[0]
         genres = random_film['genres'].values[0]
+        id = random_film['imdb_id'].values[0]
         overview = random_film['overview'].values[0]
        
         # Costruisci il messaggio da inviare all'utente
-        message = f"Ecco un film con un rating superiore a {voto}:\nTitolo: {title}\nVoto Medio: {vote_average}\nDurata: {runtime} minuti\nGenere: {genres}\nSmall overview: {overview}"
+        message = f"Ecco un film con un rating superiore a {voto}:\nTitolo: {title}\nVoto Medio: {vote_average}\nDurata: {runtime} minuti\nGenere: {genres}\nSmall overview: {overview}\nImdb Id: {id}"
        
         # Invia il messaggio all'utente
         dispatcher.utter_message(text=message)
@@ -211,14 +212,18 @@ class ActionFilmConAttore(Action):
  
         if attore is None:
             dispatcher.utter_message(text="I didn't receive the actor's name. Please provide it and try again.")
-            return []
+            return [AllSlotsReset()]
+        
+        #leviamo linee NaN da overview per usare str.contains
+        df_film_cleaned = df_film.dropna(subset=['overview'])
        
-        found_films = df_film[df_film['actors'].str.contains(attore, case=False)]
+        found_films = df_film_cleaned[df_film_cleaned['overview'].str.contains(attore, case=False)]
+        print(found_films)
 
         # Verifica se ci sono film con quell'attore
         if found_films.empty:
             dispatcher.utter_message(text=f"I didn't find any movie with the actor {attore}.")
-            return []
+            return [AllSlotsReset()]
 
         # Ordina i film per voto medio in ordine decrescente
         sorted_films = found_films.sort_values(by='vote_average', ascending=False)
@@ -240,4 +245,4 @@ class ActionFilmConAttore(Action):
             # Invia il messaggio all'utente
             dispatcher.utter_message(text=message)
  
-        return []
+        return [AllSlotsReset()]
