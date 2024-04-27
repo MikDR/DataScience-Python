@@ -102,7 +102,6 @@ class ActionCercaPerNome(Action):
     def name(self) -> Text:
         return "action_cerca_per_nome"
  
- 
    
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
  
@@ -112,7 +111,7 @@ class ActionCercaPerNome(Action):
         # .split("search the film")[1].strip()
  
         if film_title is None:
-            dispatcher.utter_message(text="Non ho ricevuto il titolo del film. Per favore, forniscilo e riprova.")
+            dispatcher.utter_message(text="I didn't receive the film's name. Please provide it and try again.")
             return []
        
         # Cerca il film nel DataFrame df_ingredients
@@ -120,27 +119,33 @@ class ActionCercaPerNome(Action):
  
         # Verifica se il film è stato trovato
         if found_films.empty:
-            dispatcher.utter_message(text="Non ho trovato nessun film con quel titolo.")
+            dispatcher.utter_message(text="I didn't find any movie with that name.")
             return []
  
-        # Prendi un film casuale tra quelli trovati (potrebbero essercene più di uno con lo stesso titolo)
-        random_film = found_films.sample(n=1)
+        sorted_films = found_films.sort_values(by='vote_average', ascending=False)
  
-        dispatcher.utter_message(text="Okay, These are some information about the movie.")
-        # Estrai le informazioni desiderate
-        title = random_film['title'].values[0]
-        vote_average = random_film['vote_average'].values[0]
-        runtime = random_film['runtime'].values[0]
-        genres = random_film['genres'].values[0]
-        overview = random_film['overview'].values[0]
-   
+        dispatcher.utter_message(text="Here are some films, ordered by rating.")
+        
+        # Cicla sui film trovati e invia le informazioni pertinenti all'utente
+        for idx, film in sorted_films.iterrows():
+            title = film['title']
+            vote_average = film['vote_average']
+            film_id = film['imdb_id']  # Ottieni l'ID del film
+
+            # Verifica se l'ID del film è None
+            if pd.isna(film_id):
+                dispatcher.utter_message(text="Unfortunately, the movie is not available.")
+                continue
+            
+            # Costruisci l'URL IMDb per il film
+            imdb_url = f"https://www.imdb.com/title/{film_id}"
  
-        # Costruisci il messaggio da inviare all'utente
-        message = f"Film title: {title}\nAverage Vote: {vote_average}\nDuration: {runtime} minutes\nGenre: {genres}\nA small overview: {overview}"
+            # Costruisci il messaggio da inviare all'utente per ogni film
+            message = f"Film title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}"
  
-        # Invia il messaggio all'utente
-        dispatcher.utter_message(text=message)
-       
+            # Invia il messaggio all'utente
+            dispatcher.utter_message(text=message)
+ 
         return []
 
 
@@ -188,3 +193,51 @@ class ActionVotoMaggioreDi(Action):
         dispatcher.utter_message(text=message)
        
         return [AllSlotsReset()]
+    
+
+
+class ActionFilmConAttore(Action):
+    def name(self) -> Text:
+        return "action_film_con_attore"
+ 
+ 
+   
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+ 
+        # Ottieni il titolo del film dalla richiesta dell'utente
+        attore = tracker.get_slot("attore")
+ 
+        # .split("search the film")[1].strip()
+ 
+        if attore is None:
+            dispatcher.utter_message(text="I didn't receive the actor's name. Please provide it and try again.")
+            return []
+       
+        found_films = df_film[df_film['actors'].str.contains(attore, case=False)]
+
+        # Verifica se ci sono film con quell'attore
+        if found_films.empty:
+            dispatcher.utter_message(text=f"I didn't find any movie with the actor {attore}.")
+            return []
+
+        # Ordina i film per voto medio in ordine decrescente
+        sorted_films = found_films.sort_values(by='vote_average', ascending=False)
+
+        # Prendi i primi 10 film dopo l'ordinamento
+        top_10_films = sorted_films.head(10)
+        
+        dispatcher.utter_message(text="Here are some movies with the specified actor, sorted by average rating:")
+        
+        # Cicla sui primi 10 film e invia le informazioni pertinenti all'utente
+        for idx, film in top_10_films.iterrows():
+            title = film['title']
+            vote_average = film['vote_average']
+            genres = film['genres']
+ 
+            # Costruisci il messaggio da inviare all'utente
+            message = f"Film title: {title}\nAverage vote: {vote_average}\nGenre: {genres}"
+ 
+            # Invia il messaggio all'utente
+            dispatcher.utter_message(text=message)
+ 
+        return []
