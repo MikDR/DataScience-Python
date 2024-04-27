@@ -244,7 +244,7 @@ nlu:
 - intent: film_con_attore
   examples: | 
     - Serch a film with [Brad Pitt](attore)
-    - Search for a movie starring [Adam Sandle](attore)
+    - Search for a movie starring [Adam Sandler](attore)
     - Find a film featuring [Leonardo DiCaprio](attore)
     - Look up a movie with [George Clooney](attore)
     - Show me films with [Daniel Craig](attore).

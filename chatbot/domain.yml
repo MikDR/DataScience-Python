@@ -135,7 +135,7 @@ slots:
     type: text
     mappings:
       - type: from_entity
-      entity: production_companies
+        entity: production_companies
 
 session_config:
   session_expiration_time: 60
