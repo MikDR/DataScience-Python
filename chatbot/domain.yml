@@ -29,6 +29,9 @@ intents:
   - film_con_attore:
       use_entities:
         - attore
+  - films_casa_prod:
+      use_entities:
+        - production_companies
 
 #bisogna controllare i Nan
 actions:
@@ -45,16 +48,18 @@ actions:
   - action_cerca_film #implementata
   - action_film_per_genere #implementata
   - action_cerca_per_nome #implementata
-  - action_voto_maggiore_di #decidere se mettere slot a stringa oppure messaggio di inserimento float
+  - action_voto_maggiore_di #aggiustare la action contando che ora è un slots text
   - action_ringraziamento #si devono implementare
   - action_info_film #si devono implementare
   - action_film_con_attore #si devono implementare
+  - action_films_casa_prod #si devono implementare
 
 entities:
   - titolo
   - genere
   - vote_average
   - attore
+  - production_companies
 
 responses:
 
@@ -115,7 +120,7 @@ slots:
         entity: genere
   
   vote_average:
-    type: float
+    type: text
     mappings:
       - type: from_entity
         entity: vote_average
@@ -125,6 +130,12 @@ slots:
     mappings:
       - type: from_entity
         entity: attore
+
+  production_companies:
+    type: text
+    mappings:
+      - type: from_entity
+      entity: production_companies
 
 session_config:
   session_expiration_time: 60

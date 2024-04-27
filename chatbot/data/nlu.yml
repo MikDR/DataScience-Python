@@ -241,7 +241,6 @@ nlu:
     - What can you tell me about [Guardians of the Galaxy](titolo)?
     - Who directed [Fight Club](titolo)?
 
-#ricordati che attore lo devi inserire nello slot in domain poichè non abbiamo un lookups e non possiamo trovare tutti gli attori
 - intent: film_con_attore
   examples: | 
     - Serch a film with [Brad Pitt](attore)
@@ -255,6 +254,24 @@ nlu:
     - Seek out a film where [Tom Holland](attore) is one of the actors.
     - Locate a movie in which [Christian Bale](attore) appears.
     - Retrieve a film with [Will Smith](attore) in the cast.
+
+- intent: films_casa_prod
+  examples: |
+    - Look up a movie by production house [Legendary Pictures](production_companies).
+    - Search for a film from production company [Warner Bros. Pictures](production_companies).
+    - Find a movie made by studio [Syncopy](production_companies).
+    - Seek out a film by [Lynda Obst Productions](production_companies) production.
+    - Locate a movie by [DC Comics](production_companies) studio.
+    - Hunt for a film from [20th Century Fox](production_companies) production house.
+    - Explore movies produced by [The Donners' Company](production_companies).
+    - Browse for a film by [Isobel Griffiths](production_companies).
+    - Investigate films made by [Regency Enterprises](production_companies) studio.
+    - Check for movies from [Taurus Film](production_companies) production.
+    - Examine films by [Columbia Pictures](production_companies).
+    - Dig for a film from [Bron Studios](production_companies) studio.
+    - Scan for a movie by [Paramount](production_companies) production house.
+    - Probe for films produced by [1492 Pictures](production_companies).
+    - Scout for a film from [The Steve Tisch Company](production_companies) production company.
 
 - intent: ringraziamento
   examples: |
