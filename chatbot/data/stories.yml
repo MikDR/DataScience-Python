@@ -44,7 +44,6 @@ stories:
   - intent: deny
   - action: utter_goodbye
 
-
 - story: cerca un film
   steps:
   - intent: cerca_film
@@ -62,8 +61,6 @@ stories:
   - intent: deny
   - action: utter_deny
   - action: utter_riprova
-  - intent: cerca_film
-
 
 - story: cerca un film per genere
   steps:
@@ -82,9 +79,6 @@ stories:
   - intent: deny
   - action: utter_deny
   - action: utter_riprova
-  - intent: film_per_genere
-
-
 
 - story: cerca un film per nome
   steps:
@@ -103,8 +97,6 @@ stories:
   - intent: deny
   - action: utter_deny
   - action: utter_riprova
-  - intent: cerca_per_nome
-
 
 - story: cerca un film per voto
   steps:
@@ -123,5 +115,57 @@ stories:
   - intent: deny
   - action: utter_deny
   - action: utter_riprova
-  - intent: voto_maggiore_di
 
+- story: cerca un film per attore
+  steps:
+  - intent: film_con_attore
+  - action: action_film_con_attore
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_goodbye
+
+- story: cerca un film per attore 2
+  steps:
+  - intent: film_con_attore
+  - action: action_film_con_attore
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+  - action: utter_riprova
+
+- story: cerca info film
+  steps:
+  - intent: info_film
+  - action: action_info_film
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_goodbye
+
+- story: cerca info film 2
+  steps:
+  - intent: info_film
+  - action: action_info_film
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+  - action: utter_riprova
+
+- story: cerca casa prod film
+  steps:
+  - intent: films_casa_prod
+  - action: action_films_casa_prod
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_goodbye
+
+- story: cerca casa prod film 2
+  steps:
+  - intent: films_casa_prod
+  - action: action_films_casa_prod
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_deny
+  - action: utter_riprova
