@@ -142,3 +142,49 @@ class ActionCercaPerNome(Action):
         dispatcher.utter_message(text=message)
        
         return []
+
+
+class ActionVotoMaggioreDi(Action):
+    def name(self) -> Text:
+        return "action_voto_maggiore_di"
+   
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        # Ottieni il titolo del film dalla richiesta dell'utente
+        voto = tracker.get_slot("vote_average")
+        # .split("search the film")[1].strip()
+        if voto is None:
+            dispatcher.utter_message(text="Non ho ricevuto un voto. Per favore, forniscilo e riprova.")
+            return [AllSlotsReset()]
+       
+   
+        # Converti il rating in float
+        try:
+            voto = float(voto)
+        except ValueError:
+            dispatcher.utter_message(text="Il rating specificato non è valido. Per favore, forniscine uno valido e riprova.")
+            return [AllSlotsReset()]
+       
+        # Filtra i film con un rating superiore al rating specificato
+        filtered_films = df_film[df_film['vote_average'] >= voto]
+       
+        if filtered_films.empty:
+            dispatcher.utter_message(text="Non ci sono film con un rating superiore a quello specificato.")
+            return [AllSlotsReset()]
+       
+        # Prendi un film casuale tra quelli filtrati
+        random_film = filtered_films.sample(n=1)
+       
+        # Estrai le informazioni del film
+        title = random_film['title'].values[0]
+        vote_average = random_film['vote_average'].values[0]
+        runtime = random_film['runtime'].values[0]
+        genres = random_film['genres'].values[0]
+        overview = random_film['overview'].values[0]
+       
+        # Costruisci il messaggio da inviare all'utente
+        message = f"Ecco un film con un rating superiore a {voto}:\nTitolo: {title}\nVoto Medio: {vote_average}\nDurata: {runtime} minuti\nGenere: {genres}\nSmall overview: {overview}"
+       
+        # Invia il messaggio all'utente
+        dispatcher.utter_message(text=message)
+       
+        return [AllSlotsReset()]
