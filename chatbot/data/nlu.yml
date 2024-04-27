@@ -156,35 +156,35 @@ nlu:
 
 - intent: film_per_genere
   examples: |
-    - I would like to watch an [action] movie (genere)
-    - I would like to watch an [action, drama] movie (genere)
-    - I want to see an [action] movie (genere)
-    - I would like to see an [action] movie (genere)
-    - What [adventure] movies can you recommend? (genere)
-    - Suggest an [adventure] movie (genere)
-    - Show me an [animation] movie (genere)
-    - I wonder if you can suggest a [comedy] movie? (genere)
-    - Is there a [thrilling] crime movie? (genere)
-    - I am going to the movies today and I wonder if there is a [documentary] movies out there? (genere)
-    - I am planning a movie night today. What [drama] movies are there? (genere)
-    - Show me [family] movies, please (genere)
-    - I want to watch a [fantasy] movie (genere)
-    - any [fantasy] movie suggestions? (genere)
-    - Can you recommend a [history] movie? (genere)
-    - Oh, sorry, I meant [horror] movies (genere)
-    - [musical] movies, please (genere)
-    - Please suggest a [musical] movie (genere)
-    - The [mystery] movies that are available (genere)
-    - I'd love to see a [mystery] movie (genere)
-    - Suggest any [romance] movie to me (genere)
-    - What cool [science fiction] can you recommend? (genere)
-    - Is there a good [TV movie] that you can suggest? (genere)
-    - I would love to see a [thriller] movie (genere)
-    - get me a [thriller] movie (genere)
-    - Tell me the name of a [war] movie (genere)
+    - I would like to watch an [action](genere) movie 
+    - I would like to watch an [action, drama](genere) movie 
+    - I want to see an [action](genere) movie 
+    - I would like to see an [action](genere) movie 
+    - What [adventure](genere) movies can you recommend? 
+    - Suggest an [adventure](genere) movie 
+    - Show me an [animation](genere) movie 
+    - I wonder if you can suggest a [comedy](genere) movie? 
+    - Is there a [thrilling](genere) crime movie? 
+    - I am going to the movies today and I wonder if there is a [documentary](genere) movies out there? 
+    - I am planning a movie night today. What [drama](genere) movies are there? 
+    - Show me [family](genere) movies, please 
+    - I want to watch a [fantasy](genere) movie 
+    - any [fantasy](genere) movie suggestions? 
+    - Can you recommend a [history](genere) movie? 
+    - Oh, sorry, I meant [horror](genere) movies 
+    - [musical](genere) movies, please 
+    - Please suggest a [musical](genere) movie 
+    - The [mystery](genere) movies that are available 
+    - I'd love to see a [mystery](genere) movie 
+    - Suggest any [romance](genere) movie to me 
+    - What cool [science fiction](genere) can you recommend? 
+    - Is there a good [TV movie](genere) that you can suggest? 
+    - I would love to see a [thriller](genere) movie 
+    - get me a [thriller](genere) movie 
+    - Tell me the name of a [war](genere) movie 
     - Show me a [war] movie (genere)
-    - I would like to watch a [western] movie with a friend (genere)
-    - I wonder if you can recommend me a [western] movie (genere)
+    - I would like to watch a [western](genere) movie with a friend 
+    - I wonder if you can recommend me a [western](genere) movie 
 
 - intent: cerca_per_nome
   examples: |

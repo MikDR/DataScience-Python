@@ -30,7 +30,7 @@ intents:
       use_entities:
         - attore
 
-
+#bisogna controllare i Nan
 actions:
   - utter_start
   - utter_greet
@@ -42,10 +42,10 @@ actions:
   - utter_iamabot
   - utter_deny
   - utter_riprova
-  - action_cerca_film #si devono implementare
-  - action_film_per_genere #si devono implementare
-  - action_cerca_per_nome #si devono implementare
-  - action_voto_maggiore_di #si devono implementare
+  - action_cerca_film #implementata
+  - action_film_per_genere #implementata
+  - action_cerca_per_nome #implementata
+  - action_voto_maggiore_di #decidere se mettere slot a stringa oppure messaggio di inserimento float
   - action_ringraziamento #si devono implementare
   - action_info_film #si devono implementare
   - action_film_con_attore #si devono implementare
