@@ -148,7 +148,6 @@ class ActionCercaPerNome(Action):
  
         return []
 
-#aggiustare il voto intero...
 class ActionVotoMaggioreDi(Action):
     def name(self) -> Text:
         return "action_voto_maggiore_di"
