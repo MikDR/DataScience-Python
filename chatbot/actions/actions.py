@@ -246,3 +246,55 @@ class ActionFilmConAttore(Action):
             dispatcher.utter_message(text=message)
  
         return [AllSlotsReset()]
+
+
+class ActionFilmCasaProd(Action):
+    def name(self) -> Text:
+        return "action_films_casa_prod"
+ 
+ 
+   
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+ 
+        # Ottieni il titolo del film dalla richiesta dell'utente
+        casa_prod = tracker.get_slot("production_companies")
+ 
+        # .split("search the film")[1].strip()
+ 
+        if casa_prod is None:
+            dispatcher.utter_message(text="I didn't receive the actor's name. Please provide it and try again.")
+            return [AllSlotsReset()]
+        
+        #leviamo linee NaN da overview per usare str.contains
+        df_film_cleaned = df_film.dropna(subset=['production_companies'])
+       
+        found_films = df_film_cleaned[df_film_cleaned['production_companies'].str.contains(casa_prod, case=False)]
+        print(found_films)
+
+        # Verifica se ci sono film con quell'attore
+        if found_films.empty:
+            dispatcher.utter_message(text=f"I did not find films from this production companies {casa_prod}.")
+            return [AllSlotsReset()]
+
+        # Ordina i film per voto medio in ordine decrescente
+        sorted_films = found_films.sort_values(by='vote_average', ascending=False)
+
+        # Prendi i primi 10 film dopo l'ordinamento
+        top_10_films = sorted_films.head(10)
+        
+        dispatcher.utter_message(text="Here are some movies with the specified actor, sorted by average rating:")
+        
+        # Cicla sui primi 10 film e invia le informazioni pertinenti all'utente
+        for idx, film in top_10_films.iterrows():
+            title = film['title']
+            vote_average = film['vote_average']
+            genres = film['genres']
+            company = film['production_companies']
+ 
+            # Costruisci il messaggio da inviare all'utente
+            message = f"Film title: {title}\nAverage vote: {vote_average}\nGenre: {genres}\nCompany: {company}"
+ 
+            # Invia il messaggio all'utente
+            dispatcher.utter_message(text=message)
+ 
+        return [AllSlotsReset()]
