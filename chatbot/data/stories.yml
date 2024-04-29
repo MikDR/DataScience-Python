@@ -49,9 +49,9 @@ stories:
   - intent: cerca_film
   - action: action_cerca_film
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-  - action: utter_goodbye
+  #- intent: affirm
+  #- action: utter_happy
+  #- action: utter_altro_aiuto
 
 - story: cerca un film 2
   steps:
@@ -67,9 +67,8 @@ stories:
   - intent: film_per_genere
   - action: action_film_per_genere
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-  - action: utter_goodbye
+  #- intent: affirm
+  #- action: utter_happy
 
 - story: cerca un film per genere 2
   steps:
@@ -87,7 +86,6 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
-  - action: utter_goodbye
 
 - story: cerca un film per nome 2
   steps:
@@ -105,7 +103,6 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
-  - action: utter_goodbye
 
 - story: cerca un film per voto 2
   steps:
@@ -123,7 +120,6 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
-  - action: utter_goodbye
 
 - story: cerca un film per attore 2
   steps:
@@ -141,7 +137,6 @@ stories:
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
-  - action: utter_goodbye
 
 - story: cerca info film 2
   steps:
@@ -157,9 +152,8 @@ stories:
   - intent: films_casa_prod
   - action: action_films_casa_prod
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-  - action: utter_goodbye
+  #- intent: affirm
+  #- action: utter_happy
 
 - story: cerca casa prod film 2
   steps:
@@ -169,3 +163,19 @@ stories:
   - intent: deny
   - action: utter_deny
   - action: utter_riprova
+
+- story: altro aiuto positivo
+  steps:
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_altro_aiuto
+  - intent: affirm
+  - action: utter_help
+
+- story: altro aiuto negativo
+  steps:
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_altro_aiuto
+  - intent: deny
+  - action: utter_goodbye

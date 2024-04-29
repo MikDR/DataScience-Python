@@ -45,6 +45,8 @@ actions:
   - utter_iamabot
   - utter_deny
   - utter_riprova
+  - utter_prego
+  - utter_altro_aiuto
   - action_cerca_film #implementata
   - action_film_per_genere #implementata
   - action_cerca_per_nome #implementata
@@ -103,6 +105,16 @@ responses:
   - text: "Try looking again."
   - text: "Try again can help you."
   - text: "Maybe I didn't understand, try again or type /help"
+
+  utter_prego:
+  - text: "No problem."
+  - text: "No worries."
+  - text: "My pleasure."
+  - text: "It was nothing!"
+  - text: "Happy to help!"
+
+  utter_altro_aiuto:
+  - text: "Can I do anything else for you?"
 
 #forms:
 

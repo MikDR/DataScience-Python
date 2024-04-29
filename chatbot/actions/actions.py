@@ -78,7 +78,7 @@ class ActionFilmPerGenere(Action):
             genere_selezionato = genere_selezionato.lower()
 
             # Filtra il DataFrame per i film che corrispondono al genere specificato
-            film_corrispondenti = df_film_senza_nan[df_film_senza_nan['genres'].str.lower().str.contains(genere_selezionato)]
+            film_corrispondenti = df_film_senza_nan[df_film_senza_nan['genres'].str.lower().str.contains(genere_selezionato, case=False)]
 
             # Escludi i film senza genere
             film_corrispondenti = film_corrispondenti[film_corrispondenti['genres'].notna()]
@@ -262,7 +262,7 @@ class ActionFilmCasaProd(Action):
         # .split("search the film")[1].strip()
  
         if casa_prod is None:
-            dispatcher.utter_message(text="I didn't receive the actor's name. Please provide it and try again.")
+            dispatcher.utter_message(text="I didn't receive the production company's name. Please provide it and try again.")
             return [AllSlotsReset()]
         
         #leviamo linee NaN da overview per usare str.contains
@@ -271,9 +271,9 @@ class ActionFilmCasaProd(Action):
         found_films = df_film_cleaned[df_film_cleaned['production_companies'].str.contains(casa_prod, case=False)]
         print(found_films)
 
-        # Verifica se ci sono film con quell'attore
+        # Verifica se ci sono film con quella casa di produzione
         if found_films.empty:
-            dispatcher.utter_message(text=f"I did not find films from this production companies {casa_prod}.")
+            dispatcher.utter_message(text=f"I did not find films from this production company {casa_prod}.")
             return [AllSlotsReset()]
 
         # Ordina i film per voto medio in ordine decrescente
@@ -282,7 +282,7 @@ class ActionFilmCasaProd(Action):
         # Prendi i primi 10 film dopo l'ordinamento
         top_10_films = sorted_films.head(10)
         
-        dispatcher.utter_message(text="Here are some movies with the specified actor, sorted by average rating:")
+        dispatcher.utter_message(text="Here are some movies with the specified production company, sorted by average rating:")
         
         # Cicla sui primi 10 film e invia le informazioni pertinenti all'utente
         for idx, film in top_10_films.iterrows():

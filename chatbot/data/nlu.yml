@@ -278,6 +278,13 @@ nlu:
     - thanks
     - thank you
     - OK
+    - Cheers
+    - I appreciate it
+    - Many thanks
+    - I owe you one
+    - ty
+    - I owe you one
+    - Nice one
 
 - synonym: movie
   examples: |
