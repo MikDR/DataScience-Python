@@ -24,6 +24,7 @@ stories:
   - intent: mood_great
   - action: utter_happy
 
+#questo capisce quando sei triste e poi dice "Ecco qualcosa per tirarti su di morale:" e basta senza dire nulla ahhahaha
 - story: sad path 1
   steps:
   - intent: greet

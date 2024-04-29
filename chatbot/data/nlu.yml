@@ -210,6 +210,8 @@ nlu:
 
 - intent: voto_maggiore_di
   examples: |
+    - [3](vote_average)
+    - [7](vote_average)
     - [5.0](vote_average)
     - [6.0](vote_average)
     - [7.0](vote_average)
