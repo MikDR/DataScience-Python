@@ -51,11 +51,18 @@ class ActionCercaFilm(Action):
         random_film = df_film.iloc[random_index]
         
         # Estrai le informazioni sul film casuale
-        film_title = random_film['title']
-        film_genre = random_film['genres']
+        film_title = random_film['title'].values[0]
+        film_genre = random_film['genres'].values[0]
+        vote_average = random_film['vote_average'].values[0]
+        runtime = random_film['runtime'].values[0]
+        id = random_film['imdb_id'].values[0]
+        overview = random_film['overview'].values[0]
         
         # Costruisci il messaggio da inviare all'utente
-        message = f"Here is a casual movie for you:\nTitolo: {film_title}\nGenre: {film_genre}"
+
+
+        message = f"Here is a casual movie for you:\nTitle: {film_title}\nAverage Vote: {vote_average}\nDuration: {runtime} minutes\nGenre: {film_genre}\nSmall overview: {overview}\nLink to IMDB film page: {id}\n---"
+
         
         # Invia il messaggio all'utente
         dispatcher.utter_message(text=message)
@@ -87,15 +94,16 @@ class ActionFilmPerGenere(Action):
             film_selezionati = film_corrispondenti.head(10)
 
             # Costruisci un messaggio contenente i dettagli dei film selezionati
-            message = "Ecco alcuni film che potrebbero interessarti:\n"
+            message = "Here are some films that you could enjoy:\n"
             for index, row in film_selezionati.iterrows():
-                message += f"Titolo: {row['title']}\nGenere: {row['genres']}\n\n"
+                imdb_url = f"https://www.imdb.com/title/{row['imdb_id']}"
+                message += f"Title: {row['title']}\nGenre: {row['genres']}\nAverage Vote: {row['vote_average']}\nDuration: {row['runtime']}\nImbd URL : {imdb_url}\nOverview : {row['overview']}\n---"
 
             # Invia il messaggio all'utente
             dispatcher.utter_message(text=message)
             return []
         else:
-            dispatcher.utter_message(text="Non è stato specificato un genere valido.")
+            dispatcher.utter_message(text="No genre specified.")
             return []
             
 class ActionCercaPerNome(Action):
@@ -124,7 +132,7 @@ class ActionCercaPerNome(Action):
  
         sorted_films = found_films.sort_values(by='vote_average', ascending=False)
  
-        dispatcher.utter_message(text="Here are some films, ordered by rating.")
+        dispatcher.utter_message(text="Here are some films, ordered by rating:\n---")
         
         # Cicla sui film trovati e invia le informazioni pertinenti all'utente
         for idx, film in sorted_films.iterrows():
@@ -134,14 +142,21 @@ class ActionCercaPerNome(Action):
 
             # Verifica se l'ID del film è None
             if pd.isna(film_id):
-                dispatcher.utter_message(text="Unfortunately, the movie is not available.")
+                title = film['title']
+                vote_average = film['vote_average']
+                imdb_url = f"Unfortunately, the movie is not available on IMDB page."
+                message = f"\nFilm title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
+                # Invia il messaggio all'utente
+                dispatcher.utter_message(text=message)
+    
+                #dispatcher.utter_message(text="Unfortunately, the movie is not available.")
                 continue
             
             # Costruisci l'URL IMDb per il film
             imdb_url = f"https://www.imdb.com/title/{film_id}"
  
             # Costruisci il messaggio da inviare all'utente per ogni film
-            message = f"Film title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}"
+            message = f"Film title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
  
             # Invia il messaggio all'utente
             dispatcher.utter_message(text=message)
@@ -157,7 +172,7 @@ class ActionVotoMaggioreDi(Action):
         voto = tracker.get_slot("vote_average")
         # .split("search the film")[1].strip()
         if voto is None:
-            dispatcher.utter_message(text="Non ho ricevuto un voto. Per favore, forniscilo e riprova.")
+            dispatcher.utter_message(text="I didn't receive a vote. Please provide it and try again.")
             return [AllSlotsReset()]
        
    
@@ -165,14 +180,14 @@ class ActionVotoMaggioreDi(Action):
         try:
             voto = float(voto)
         except ValueError:
-            dispatcher.utter_message(text="Il rating specificato non è valido. Per favore, forniscine uno valido e riprova.")
+            dispatcher.utter_message(text="The specified rating is not valid. Please provide a valid one and try again.")
             return [AllSlotsReset()]
        
         # Filtra i film con un rating superiore al rating specificato
         filtered_films = df_film[df_film['vote_average'] >= voto]
        
         if filtered_films.empty:
-            dispatcher.utter_message(text="Non ci sono film con un rating superiore a quello specificato.")
+            dispatcher.utter_message(text="There are no movies with a rating higher than the one specified.")
             return [AllSlotsReset()]
        
         # Prendi un film casuale tra quelli filtrati
@@ -187,7 +202,7 @@ class ActionVotoMaggioreDi(Action):
         overview = random_film['overview'].values[0]
        
         # Costruisci il messaggio da inviare all'utente
-        message = f"Ecco un film con un rating superiore a {voto}:\nTitolo: {title}\nVoto Medio: {vote_average}\nDurata: {runtime} minuti\nGenere: {genres}\nSmall overview: {overview}\nImdb Id: {id}"
+        message = f"Here is a film with a rating higher than {voto}:\nTitle: {title}\nAverage Vote: {vote_average}\nDuration: {runtime} minutes\nGenre: {genres}\nSmall overview: {overview}\nLink to IMDB film page: {id}\n---"
        
         # Invia il messaggio all'utente
         dispatcher.utter_message(text=message)
@@ -230,7 +245,7 @@ class ActionFilmConAttore(Action):
         # Prendi i primi 10 film dopo l'ordinamento
         top_10_films = sorted_films.head(10)
         
-        dispatcher.utter_message(text="Here are some movies with the specified actor, sorted by average rating:")
+        dispatcher.utter_message(text="Here are some movies with the specified actor, sorted by average rating:\n---")
         
         # Cicla sui primi 10 film e invia le informazioni pertinenti all'utente
         for idx, film in top_10_films.iterrows():
@@ -239,7 +254,7 @@ class ActionFilmConAttore(Action):
             genres = film['genres']
  
             # Costruisci il messaggio da inviare all'utente
-            message = f"Film title: {title}\nAverage vote: {vote_average}\nGenre: {genres}"
+            message = f"Film title: {title}\nAverage vote: {vote_average}\nGenre: {genres}\n\n---"
  
             # Invia il messaggio all'utente
             dispatcher.utter_message(text=message)
@@ -281,7 +296,7 @@ class ActionFilmCasaProd(Action):
         # Prendi i primi 10 film dopo l'ordinamento
         top_10_films = sorted_films.head(10)
         
-        dispatcher.utter_message(text="Here are some movies with the specified production company, sorted by average rating:")
+        dispatcher.utter_message(text="Here are some movies with the specified production company, sorted by average rating:\n---")
         
         # Cicla sui primi 10 film e invia le informazioni pertinenti all'utente
         for idx, film in top_10_films.iterrows():
@@ -291,7 +306,7 @@ class ActionFilmCasaProd(Action):
             company = film['production_companies']
  
             # Costruisci il messaggio da inviare all'utente
-            message = f"Film title: {title}\nAverage vote: {vote_average}\nGenre: {genres}\nCompany: {company}"
+            message = f"Film title: {title}\nAverage vote: {vote_average}\nGenre: {genres}\nCompany: {company}\n"
  
             # Invia il messaggio all'utente
             dispatcher.utter_message(text=message)
