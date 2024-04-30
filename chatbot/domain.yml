@@ -33,7 +33,6 @@ intents:
       use_entities:
         - production_companies
 
-#bisogna controllare i Nan
 actions:
   - utter_start
   - utter_greet
@@ -47,14 +46,14 @@ actions:
   - utter_riprova
   - utter_prego
   - utter_altro_aiuto
-  - action_cerca_film #implementata
-  - action_film_per_genere #implementata
-  - action_cerca_per_nome #implementata
-  - action_voto_maggiore_di #aggiustare la action contando che ora è un slots text
-  - action_ringraziamento #si devono implementare
-  - action_info_film #si devono implementare
-  - action_film_con_attore #si devono implementare
-  - action_films_casa_prod #si devono implementare
+  - action_cerca_film
+  - action_film_per_genere
+  - action_cerca_per_nome
+  - action_voto_maggiore_di
+  - action_ringraziamento
+  - action_info_film
+  - action_film_con_attore
+  - action_films_casa_prod
 
 entities:
   - titolo
@@ -125,8 +124,6 @@ responses:
 
   utter_altro_aiuto:
   - text: "Can I do anything else for you?"
-
-#forms:
 
 slots:
   titolo:
