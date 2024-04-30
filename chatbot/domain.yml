@@ -71,17 +71,13 @@ responses:
   utter_greet:
   - text: "Hey! How are you?"
 
-#penso che l'immagine presa in locale non funziona
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
     image: 'https://static.toiimg.com/thumb/msid-71522023,width-1280,height-720,resizemode-4/71522023.jpg'
-  #- text: "Here is something to cheer you up:"
-   # image: 'DataScience-Python\chatbot\images\John-Wick-Movie-Meme.jpg'
-  #- text: "Here is something to cheer you up:"
-   # image: 'DataScience-Python\chatbot\images\memone.jpg'
-  #- text: "Here is something to cheer you up:"
-   # image: 'DataScience-Python\chatbot\images\mems.jpg'
-
+  - text: "Here is something to cheer you up:"
+    image: 'https://i.pinimg.com/236x/92/3a/78/923a78f666b31af430fccaa6b692ef94.jpg'
+  - text: "Here is something to cheer you up:"
+    image: 'https://therockle.com/wp-content/uploads/2020/11/titanic-movie-meme.jpg'
 
   utter_did_that_help:
   - text: "Did that help you?"
