@@ -71,8 +71,16 @@ responses:
   utter_greet:
   - text: "Hey! How are you?"
 
+#penso che l'immagine presa in locale non funziona
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
+    image: 'https://static.toiimg.com/thumb/msid-71522023,width-1280,height-720,resizemode-4/71522023.jpg'
+  #- text: "Here is something to cheer you up:"
+   # image: 'DataScience-Python\chatbot\images\John-Wick-Movie-Meme.jpg'
+  #- text: "Here is something to cheer you up:"
+   # image: 'DataScience-Python\chatbot\images\memone.jpg'
+  #- text: "Here is something to cheer you up:"
+   # image: 'DataScience-Python\chatbot\images\mems.jpg'
 
 
   utter_did_that_help:
@@ -83,9 +91,15 @@ responses:
           \n
           \n-I would like to see a movie.
           \n
-          \n-I would like to search a movie by name or genere: to search for a movie directly by its name.
+          \n-I would like to search a movie by genere: to search a set of movie directly by its genre.
           \n
-          \n-I would like to see a movie with a rating better then (a number): to ask me to serch a movies with a rating better than your number."
+          \n-I would like to see a movie with a rating better then (a number): to ask me to serch a movies with a rating better than your number.
+          \n
+          \n-I would like to search the film (title): to search a movie directly by its name.
+          \n
+          \n-Tell me about (title): to get information about the movie you searched for.
+          \n
+          \n-Serch a film with (actor): to search a movie with your actor in the cast."
 
   utter_happy:
   - text: "Great, carry on!"

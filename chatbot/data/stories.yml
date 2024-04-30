@@ -24,7 +24,6 @@ stories:
   - intent: mood_great
   - action: utter_happy
 
-#questo capisce quando sei triste e poi dice "Ecco qualcosa per tirarti su di morale:" e basta senza dire nulla ahhahaha
 - story: sad path 1
   steps:
   - intent: greet
@@ -85,8 +84,8 @@ stories:
   - intent: cerca_per_nome
   - action: action_cerca_per_nome
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  #- intent: affirm
+  #- action: utter_happy
 
 - story: cerca un film per nome 2
   steps:
@@ -102,8 +101,8 @@ stories:
   - intent: voto_maggiore_di
   - action: action_voto_maggiore_di
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  #- intent: affirm
+  #- action: utter_happy
 
 - story: cerca un film per voto 2
   steps:
@@ -119,8 +118,8 @@ stories:
   - intent: film_con_attore
   - action: action_film_con_attore
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  #- intent: affirm
+  #- action: utter_happy
 
 - story: cerca un film per attore 2
   steps:
@@ -136,8 +135,8 @@ stories:
   - intent: info_film
   - action: action_info_film
   - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  #- intent: affirm
+  #- action: utter_happy
 
 - story: cerca info film 2
   steps:

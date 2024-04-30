@@ -65,6 +65,20 @@ nlu:
     - so so perfect
     - so good
     - so perfect
+    - i'm good
+    - i'm fine
+    - all good
+    - Fantastic
+    - Outstanding
+    - Unbelievable
+    - I'm on cloud nine
+    - Marvelous
+    - I'm doing great
+    - I'm on top of the world
+    - I'm at my best
+    - I'm in top form
+    - I'm in heaven
+    - I'm happy
 
 - intent: mood_unhappy
   examples: |
@@ -82,6 +96,16 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+    - Terrible
+    - Miserable
+    - Devastated
+    - I'm feeling down
+    - Disheartened
+    - Dejected
+    - I'm feeling blue
+    - Distressed
+    - I'm feeling low
+    - I'm in a funk
 
 - intent: bot_challenge
   examples: |
@@ -153,6 +177,16 @@ nlu:
     - I wonder if you can recommend me a movie
     - I wonder if you can suggest a movie
     - Show me a movie
+    - Could you recommend a film?
+    - Any good movies to watch?
+    - What movie should I watch?
+    - Any suggestions for a movie?
+    - I'm looking for a movie to watch.
+    - Can you give me a movie recommendation?
+    - Tell me about a good movie.
+    - Recommend me a movie, please.
+    - What's a good movie to see?
+    - Any ideas for a movie I should watch?
 
 - intent: film_per_genere
   examples: |
@@ -242,6 +276,13 @@ nlu:
     - Give me the plot of the movie [Pulp Fiction](titolo).
     - What can you tell me about [Guardians of the Galaxy](titolo)?
     - Who directed [Fight Club](titolo)?
+    - What's the scoop on [Titanic](titolo)?
+    - Could you provide details on [Iron Man 2](titolo)?
+    - I'm curious about [The Wolf of Wall Street](titolo). Can you tell me more?
+    - How does [The Matrix](titolo) rate?
+    - What's the storyline of [Forrest Gump](titolo)?
+    - Give me the lowdown on [Django Unchained](titolo).
+    - Who are the main actors in [Iron Man](titolo)?
 
 - intent: film_con_attore
   examples: | 
@@ -256,6 +297,16 @@ nlu:
     - Seek out a film where [Tom Holland](attore) is one of the actors.
     - Locate a movie in which [Christian Bale](attore) appears.
     - Retrieve a film with [Will Smith](attore) in the cast.
+    - Find a movie with [Brad Pitt](attore).
+    - Show me films starring [Adam Sandler](attore).
+    - Search for a movie featuring [Leonardo DiCaprio](attore).
+    - Look up a film with [George Clooney](attore).
+    - Can you locate movies with [Daniel Craig](attore)?
+    - I'm interested in a movie that includes [Jim Carrey](attore).
+    - I'd like to watch a film with [Tom Hanks](attore).
+    - Discover a movie with [Morgan Freeman](attore) in it.
+    - Find a film where [Tom Holland](attore) is one of the actors.
+    - Locate a movie in which [Christian Bale](attore) appears.
 
 - intent: films_casa_prod
   examples: |
@@ -274,6 +325,12 @@ nlu:
     - Scan for a movie by [Paramount](production_companies) production house.
     - Probe for films produced by [1492 Pictures](production_companies).
     - Scout for a film from [The Steve Tisch Company](production_companies) production company.
+    - Find a movie produced by [Legendary Pictures](production_companies).
+    - Search for films from the production house [Warner Bros. Pictures](production_companies).
+    - Look for a movie made by the studio [Syncopy](production_companies).
+    - Locate films by [Lynda Obst Productions](production_companies).
+    - Explore movies by the studio [DC Comics](production_companies).
+    - Seek out films from [20th Century Fox](production_companies).
 
 - intent: ringraziamento
   examples: |
