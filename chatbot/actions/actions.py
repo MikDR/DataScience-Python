@@ -50,18 +50,23 @@ class ActionCercaFilm(Action):
         # Seleziona la riga corrispondente all'indice casuale
         random_film = df_film.iloc[random_index]
         
-        # Estrai le informazioni sul film casuale
-        film_title = random_film['title'].values[0]
-        film_genre = random_film['genres'].values[0]
-        vote_average = random_film['vote_average'].values[0]
-        runtime = random_film['runtime'].values[0]
-        id = random_film['imdb_id'].values[0]
-        overview = random_film['overview'].values[0]
         
-        # Costruisci il messaggio da inviare all'utente
+        # Estrai le informazioni sul film casuale
+        film_title = random_film['title']
+        film_genre = random_film['genres']
+        vote_average = random_film['vote_average']
+        runtime = random_film['runtime']
+        overview = random_film['overview']
+
+        id = random_film['imdb_id']
+         # Costruisci il messaggio da inviare all'utente
+        if pd.isna(id):
+            imdb_url = f"https://www.imdb.com/title/{id}"
+        else:
+            imdb_url= f"Unfortunately, the movie is not available on IMDB page."
 
 
-        message = f"Here is a casual movie for you:\nTitle: {film_title}\nAverage Vote: {vote_average}\nDuration: {runtime} minutes\nGenre: {film_genre}\nSmall overview: {overview}\nLink to IMDB film page: {id}\n---"
+        message = f"Here is a casual movie for you:\nTitle: {film_title}\nAverage Vote: {vote_average}\nDuration: {runtime} minutes\nGenre: {film_genre}\nSmall overview: {overview}\nLink to IMDB film page: {imdb_url}\n---"
 
         
         # Invia il messaggio all'utente
@@ -87,24 +92,28 @@ class ActionFilmPerGenere(Action):
             # Filtra il DataFrame per i film che corrispondono al genere specificato
             film_corrispondenti = df_film_senza_nan[df_film_senza_nan['genres'].str.lower().str.contains(genere_selezionato, case=False)]
 
-            # Escludi i film senza genere
+            # Escludi i film senza genere e con id nullo, perché altrimenti non visualizziamo la foto su telegram
             film_corrispondenti = film_corrispondenti[film_corrispondenti['genres'].notna()]
+            film_corrispondenti = film_corrispondenti[film_corrispondenti['imdb_id'].notna()]
 
             # Prendi i primi 10 film che soddisfano il criterio di filtraggio
             film_selezionati = film_corrispondenti.head(10)
 
+            
             # Costruisci un messaggio contenente i dettagli dei film selezionati
             message = "Here are some films that you could enjoy:\n"
             for index, row in film_selezionati.iterrows():
-                imdb_url = f"https://www.imdb.com/title/{row['imdb_id']}"
-                message += f"Title: {row['title']}\nGenre: {row['genres']}\nAverage Vote: {row['vote_average']}\nDuration: {row['runtime']}\nImbd URL : {imdb_url}\nOverview : {row['overview']}\n---"
+                id = row['imdb_id']
+                imdb_url = f"https://www.imdb.com/title/{id}"
+                
+                message = f"Title: {row['title']}\nGenre: {row['genres']}\nAverage Vote: {row['vote_average']}\nDuration: {row['runtime']}\nOverview : {row['overview']}\nIMDB URL : {imdb_url}\n---"
 
-            # Invia il messaggio all'utente
-            dispatcher.utter_message(text=message)
-            return []
+                # Invia il messaggio all'utente
+                dispatcher.utter_message(text=message)
+            return [AllSlotsReset()]
         else:
             dispatcher.utter_message(text="No genre specified.")
-            return []
+            return [AllSlotsReset()]
             
 class ActionCercaPerNome(Action):
     def name(self) -> Text:
@@ -120,7 +129,7 @@ class ActionCercaPerNome(Action):
  
         if film_title is None:
             dispatcher.utter_message(text="I didn't receive the film's name. Please provide it and try again.")
-            return []
+            return [AllSlotsReset()]
        
         # Cerca il film nel DataFrame df_ingredients
         found_films = df_film[df_film['title'].str.lower() == film_title.lower()]
@@ -128,7 +137,7 @@ class ActionCercaPerNome(Action):
         # Verifica se il film è stato trovato
         if found_films.empty:
             dispatcher.utter_message(text="I didn't find any movie with that name.")
-            return []
+            return [AllSlotsReset()]
  
         sorted_films = found_films.sort_values(by='vote_average', ascending=False)
  
@@ -142,26 +151,25 @@ class ActionCercaPerNome(Action):
 
             # Verifica se l'ID del film è None
             if pd.isna(film_id):
-                title = film['title']
-                vote_average = film['vote_average']
+                
                 imdb_url = f"Unfortunately, the movie is not available on IMDB page."
                 message = f"\nFilm title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
                 # Invia il messaggio all'utente
                 dispatcher.utter_message(text=message)
+                return [AllSlotsReset()]
     
                 #dispatcher.utter_message(text="Unfortunately, the movie is not available.")
-                continue
-            
-            # Costruisci l'URL IMDb per il film
-            imdb_url = f"https://www.imdb.com/title/{film_id}"
+            else:
+                
+                # Costruisci l'URL IMDb per il film
+                imdb_url = f"https://www.imdb.com/title/{film_id}"
+    
+                # Costruisci il messaggio da inviare all'utente per ogni film
+                message = f"Film title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
  
-            # Costruisci il messaggio da inviare all'utente per ogni film
-            message = f"Film title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
- 
-            # Invia il messaggio all'utente
-            dispatcher.utter_message(text=message)
- 
-        return []
+                # Invia il messaggio all'utente
+                dispatcher.utter_message(text=message)
+                return [AllSlotsReset()]
 
 class ActionVotoMaggioreDi(Action):
     def name(self) -> Text:

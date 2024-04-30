@@ -234,7 +234,7 @@ nlu:
     - would you give me the [Guardians of the Galaxy] movie (titolo)
     - I'm going to see [Pulp Fiction](titolo)
     - film [Forrest Gump](titolo)
-    - film: [Harry Potter and the Philosopher's Stone]
+    - film: [Harry Potter and the Philosopher's Stone](titolo)
     - [Harry Potter and the Philosopher's Stone](titolo)
     - [Iron Man](titolo)
     - [Django Unchained](titolo) 
