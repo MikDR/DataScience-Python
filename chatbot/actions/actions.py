@@ -114,7 +114,8 @@ class ActionFilmPerGenere(Action):
         else:
             dispatcher.utter_message(text="No genre specified.")
             return [AllSlotsReset()]
-            
+
+#mostra tutti i film che contengono il nome inserito           
 class ActionCercaPerNome(Action):
     def name(self) -> Text:
         return "action_cerca_per_nome"
@@ -131,8 +132,8 @@ class ActionCercaPerNome(Action):
             dispatcher.utter_message(text="I didn't receive the film's name. Please provide it and try again.")
             return [AllSlotsReset()]
        
-        # Cerca il film nel DataFrame df_ingredients
-        found_films = df_film[df_film['title'].str.lower() == film_title.lower()]
+        # Cerca il film nel DataFrame 
+        found_films = df_film[df_film['title'].str.lower().str.contains(film_title, case=False)]
  
         # Verifica se il film è stato trovato
         if found_films.empty:
@@ -153,11 +154,7 @@ class ActionCercaPerNome(Action):
             if pd.isna(film_id):
                 
                 imdb_url = f"Unfortunately, the movie is not available on IMDB page."
-                message = f"\nFilm title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
-                # Invia il messaggio all'utente
-                dispatcher.utter_message(text=message)
-                return [AllSlotsReset()]
-    
+                #message = f"\nFilm title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
                 #dispatcher.utter_message(text="Unfortunately, the movie is not available.")
             else:
                 
@@ -165,11 +162,11 @@ class ActionCercaPerNome(Action):
                 imdb_url = f"https://www.imdb.com/title/{film_id}"
     
                 # Costruisci il messaggio da inviare all'utente per ogni film
-                message = f"Film title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
+            message = f"Film title: {title}\nAverage Vote: {vote_average}\nIMDb URL: {imdb_url}\n---"
  
-                # Invia il messaggio all'utente
-                dispatcher.utter_message(text=message)
-                return [AllSlotsReset()]
+            # Invia il messaggio all'utente
+            dispatcher.utter_message(text=message)
+        return [AllSlotsReset()]
 
 class ActionVotoMaggioreDi(Action):
     def name(self) -> Text:
@@ -206,11 +203,17 @@ class ActionVotoMaggioreDi(Action):
         vote_average = random_film['vote_average'].values[0]
         runtime = random_film['runtime'].values[0]
         genres = random_film['genres'].values[0]
-        id = random_film['imdb_id'].values[0]
+        
         overview = random_film['overview'].values[0]
+        id = random_film['imdb_id'].values[0]
+       
+        if pd.isna(id):
+            imdb_url = f"Unfortunately, the movie is not available on IMDB page."    
+        else:
+            imdb_url = f"https://www.imdb.com/title/{id}"  
        
         # Costruisci il messaggio da inviare all'utente
-        message = f"Here is a film with a rating higher than {voto}:\nTitle: {title}\nAverage Vote: {vote_average}\nDuration: {runtime} minutes\nGenre: {genres}\nSmall overview: {overview}\nLink to IMDB film page: {id}\n---"
+        message = f"Here is a film with a rating higher than {voto}:\nTitle: {title}\nAverage Vote: {vote_average}\nDuration: {runtime} minutes\nGenre: {genres}\nSmall overview: {overview}\nLink to IMDB film page: {imdb_url}\n---"
        
         # Invia il messaggio all'utente
         dispatcher.utter_message(text=message)
@@ -239,7 +242,7 @@ class ActionFilmConAttore(Action):
         #leviamo linee NaN da overview per usare str.contains
         df_film_cleaned = df_film.dropna(subset=['overview'])
        
-        found_films = df_film_cleaned[df_film_cleaned['overview'].str.contains(attore, case=False)]
+        found_films = df_film_cleaned[df_film_cleaned['overview'].str.lower().str.contains(attore, case=False)]
         print(found_films)
 
         # Verifica se ci sono film con quell'attore
@@ -290,7 +293,7 @@ class ActionFilmCasaProd(Action):
         #leviamo linee NaN da overview per usare str.contains
         df_film_cleaned = df_film.dropna(subset=['production_companies'])
        
-        found_films = df_film_cleaned[df_film_cleaned['production_companies'].str.contains(casa_prod, case=False)]
+        found_films = df_film_cleaned[df_film_cleaned['production_companies'].str.lower().str.contains(casa_prod, case=False)]
         print(found_films)
 
         # Verifica se ci sono film con quella casa di produzione
