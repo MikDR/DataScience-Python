@@ -261,28 +261,26 @@ nlu:
 
 - intent: info_film
   examples: |
-    - Tell me about [Titanic](titolo)
-    - What is [Iron Man 2](titolo) about?
-    - Can you give me information about [The Wolf of Wall Street](titolo)
-    - What is [The Matrix](titolo) rating?
-    - Plot of the movie [Forrest Gump](titolo)
-    - Info about [Django Unchained](titolo)
-    - Who stars in [Avatar](titolo)?
-    - Tell me about the actors in [Iron Man](titolo).
-    - What are the genres of [Deadpool](titolo)?
-    - When was [Interstellar](titolo) released
-    - What year did [Inception](titolo) come out?
-    - How good are the ratings for [Avengers: Endgame](titolo)?
-    - Give me the plot of the movie [Pulp Fiction](titolo).
-    - What can you tell me about [Guardians of the Galaxy](titolo)?
-    - Who directed [Fight Club](titolo)?
-    - What's the scoop on [Titanic](titolo)?
-    - Could you provide details on [Iron Man 2](titolo)?
-    - I'm curious about [The Wolf of Wall Street](titolo). Can you tell me more?
-    - How does [The Matrix](titolo) rate?
-    - What's the storyline of [Forrest Gump](titolo)?
-    - Give me the lowdown on [Django Unchained](titolo).
-    - Who are the main actors in [Iron Man](titolo)?
+    - I want to see a movie with [Cobb's corporate espionage](overview)
+    - I want to see a movie where [explorers use a wormhole](overview)
+    - I want to watch a film where [Batman fights crime](overview)
+    - I'd like to see a movie set [in the 22nd century](overview)
+    - Please suggest a movie where [Nick Fury assembles a team](overview)
+    - Can you recommend a film about [Wade Wilson?](overview)
+    - I'm looking for a movie where [the Avengers face Thanos](overview)
+    - Show me a film where [insomniacs start fight clubs](overview)
+    - Find me a movie where [Peter Quill hunts an orb](overview)
+    - Recommend a comedic crime caper [with quirky characters](overview)
+    - Suggest a film where [Tony Stark builds armor](overview)
+    - I'd like to watch a movie where [a freed slave seeks justice](overview)
+    - Show me a film where [Andy Dufresne faces prison](overview)
+    - Recommend a movie where [the Avengers battle Thanos](overview)
+    - Find a film [about hackers fighting computers](overview)
+    - Please suggest a movie where [a comedian turns insane](overview)
+    - I'm interested in a film where [Frodo embarks on a journey](overview)
+    - Recommend a movie where [Aragorn saves Gondor](overview)
+    - Show me a film where [Marshal Teddy Daniels investigates](overview)
+    - Find a movie [based on Jordan Belfort's autobiography](overview)
 
 - intent: film_con_attore
   examples: | 

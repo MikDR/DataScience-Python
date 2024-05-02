@@ -14,6 +14,8 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import AllSlotsReset
 import pandas as pd
 import random
+import nltk
+from nltk.corpus import stopwords
 #
 #
 
@@ -294,7 +296,7 @@ class ActionFilmCasaProd(Action):
         df_film_cleaned = df_film.dropna(subset=['production_companies'])
        
         found_films = df_film_cleaned[df_film_cleaned['production_companies'].str.lower().str.contains(casa_prod, case=False)]
-        print(found_films)
+        #print(found_films)
 
         # Verifica se ci sono film con quella casa di produzione
         if found_films.empty:
@@ -323,3 +325,66 @@ class ActionFilmCasaProd(Action):
             dispatcher.utter_message(text=message)
  
         return [AllSlotsReset()]
+
+class ActionInfoFilm(Action):
+    def name(self) -> Text:
+        return "action_info_film"
+    
+    def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        overview = tracker.get_slot("overview")
+        df_film_cleaned = df_film.dropna(subset=['overview'])
+
+        if overview is None:
+            dispatcher.utter_message(text="I didn't receive the overview. Please provide it and try again.")
+            return [AllSlotsReset()]
+
+        dispatcher.utter_message(text="Okay, I will try to look for a movie with this words.")
+
+        key_list = overview.split()
+
+        english_stopwords = set(stopwords.words('english'))
+        key_list_filtered = [word for word in key_list if word.lower() not in english_stopwords]
+
+        shown_movies = set()
+
+        for key in key_list_filtered:
+            found_films = df_film_cleaned[df_film_cleaned['overview'].str.lower().str.contains(key, case=False, regex=True)]
+            #print(found_films)
+
+            # Verifica se ci sono film con quella trama
+            if found_films.empty:
+                dispatcher.utter_message(text=f"I did not find films with this story {overview}.")
+                return [AllSlotsReset()]
+
+
+            # Prendi i primi 3
+            top_3_films = found_films.head(3)
+            top_3_films = top_3_films[~top_3_films['title'].isin(shown_movies)]
+            
+
+            dispatcher.utter_message(text=f"Here are some movies with the specified word:{key}\n---")
+
+            for idx, film in top_3_films.iterrows():
+                title = film['title']
+                vote_average = film['vote_average']
+                genres = film['genres']
+                view = film['overview']
+
+                if title in shown_movies:
+                    continue
+    
+                # Costruisci il messaggio da inviare all'utente
+                message = f"Film title: {title}\nAverage vote: {vote_average}\nGenre: {genres}\nOverview: {view}\n"
+    
+                # Invia il messaggio all'utente
+                dispatcher.utter_message(text=message)
+                shown_movies.add(title)
+
+        if not shown_movies:
+            dispatcher.utter_message(text=f"I did not find films with any of the specified words in the overview.")
+            return [AllSlotsReset()]
+ 
+        return [AllSlotsReset()]
+
+        
